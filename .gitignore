@@ -1,0 +1,6 @@
+/.idea/*
+/target/*
+/logs/*
+/conf/application.conf
+/project/project/*
+/project/target/*
