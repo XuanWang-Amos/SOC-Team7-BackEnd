@@ -16,11 +16,8 @@ libraryDependencies ++= Seq(
 // Play provides two styles of routers, one expects its actions to be injected, the
 // other, legacy style, accesses its actions statically.
 routesGenerator := InjectedRoutesGenerator
-
+resolvers += Resolver.url("Typesafe Ivy releases", url("https://repo.typesafe.com/typesafe/ivy-releases"))(Resolver.ivyStylePatterns)
 pipelineStages := Seq(rjs, digest, gzip)
-
-
-fork in run := true
 
 
 fork in run := true
