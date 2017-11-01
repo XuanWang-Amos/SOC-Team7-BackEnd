@@ -23,6 +23,9 @@ public class ServiceUser extends Model {
     @Column(name = "email")
     public String email;
 
+    public void setKeywords(String val) {
+        this.keywords = val;
+    }
     public static Finder<String, ServiceUser> find = new Finder<String,ServiceUser>(ServiceUser.class);
 
 }

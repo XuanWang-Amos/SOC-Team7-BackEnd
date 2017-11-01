@@ -70,7 +70,7 @@ public class Application extends Controller {
     public Result loginSubmit() {
 
         DynamicForm form = Form.form().bindFromRequest();
-
+        Logger.info("Username is: " + form.get("userName"));
         if (form.data().size() != 2) {
             return badRequest("Bad Login Request");
         } else {
@@ -156,6 +156,7 @@ public class Application extends Controller {
     public Result updateProviderInfo(String username) {
         DynamicForm form = Form.form().bindFromRequest();
 
+            username = form.get("username");
             String credential = form.get("credential");
             String researchAreas = form.get("researchAreas");
             String publications = form.get("publications");
@@ -185,11 +186,13 @@ public class Application extends Controller {
 
     public Result updateServiceUser(String username) {
         DynamicForm form = Form.form().bindFromRequest();
+        username = form.get("username");
         String keywords = form.get("keywords");
+        Logger.info("name:" + username + "   keywords:" + keywords);
         try {
             boolean update = db.updateServiceUser(username, keywords);
             if (update) {
-                return ok("Update Success");
+                return ok("Update User Info Success");
             } else {
                 return ok("Update Failure");
             }
@@ -271,6 +274,7 @@ public class Application extends Controller {
 
     public Result updateProjectProvider(String username) {
         DynamicForm form = Form.form().bindFromRequest();
+        username = form.get("usename");
         String project = form.get("project");
         try {
             boolean update = db.updateProjectProvider(username, project);
@@ -381,6 +385,7 @@ public class Application extends Controller {
 
     public Result sendChat(String sender) {
         DynamicForm form = Form.form().bindFromRequest();
+        sender = form.get("sender");
         String receiver = form.get("checkedUser");
         String message = form.get("chatMessage");
 

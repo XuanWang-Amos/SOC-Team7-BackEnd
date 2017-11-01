@@ -199,7 +199,7 @@ public class dbHandle {
 
             if(su.find.where().eq("username",username).findUnique()!=null){
                 ServiceUser serviceUser= su.find.where().eq("username",username).findUnique();
-                serviceUser.keywords = keywords;
+                serviceUser.setKeywords(keywords);
                 serviceUser.update();
             }
             else{
