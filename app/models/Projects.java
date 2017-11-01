@@ -25,7 +25,9 @@ public class Projects extends Model {
 
     @Constraints.Required
     public String status;
-
+    public void setStatus(String newstatus) {
+        this.status = newstatus;
+    }
     @Column(name = "projectDescription")
     public String projectDescription;
 

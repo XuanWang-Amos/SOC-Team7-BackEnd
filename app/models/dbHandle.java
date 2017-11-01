@@ -241,12 +241,11 @@ public class dbHandle {
         try {
             if (projects.find.where().eq("projectName", project).findUnique() != null) {
                 Projects proj = projects.find.where().eq("projectName", project).findUnique();
-                proj.status = status;
+                proj.setStatus(status);
                 proj.update();
+                Logger.info("New Status: " + proj.status);
             } else {
-                Projects proj = new Projects();
-                proj.projectName = project;
-                proj.status = status;
+                return false;
             }
             return true;
         } catch (Exception e) {
